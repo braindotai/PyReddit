@@ -4,7 +4,6 @@ from django.contrib.auth import login, logout
 from .forms import UserSignUpForm, UserSignInForm
 
 
-
 def signup(request):
     if request.method == 'POST':
         form = UserSignUpForm(data = request.POST)
@@ -16,8 +15,11 @@ def signup(request):
             messages.error(request, f"Error occured while signing up!")
     else:
         form = UserSignUpForm()
-    return render(request, 'Users/signup.html', context = {'form': form, 'title': 'Sign Up'})
-    
+    context = {'form': form,
+               'title': 'Sign Up',
+               'active': 'signup'}
+    return render(request, 'Users/signup.html', context = context)
+
 
 def signin(request):
     if request.method == 'POST':
@@ -31,7 +33,10 @@ def signin(request):
             messages.error(request, "Error occured while signing in!")
     else:
         form = UserSignInForm()
-    return render(request, 'Users/signin.html', context = {'form': form, 'title': 'Sign In'})
+    context = {'form': form,
+               'title': 'Sign In',
+               'active': 'signin'}
+    return render(request, 'Users/signin.html', context = context)
 
 
 def signout(request):
