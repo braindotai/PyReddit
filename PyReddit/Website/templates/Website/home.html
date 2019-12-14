@@ -1,0 +1,23 @@
+{% extends "Website/layout.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        {% for post in posts %}
+            <div class="card">
+                <p class="date_posted">{{ post.date_posted|date:"F d, Y" }}</p>
+                <a href="#" class="author">
+                    <img src="{% static 'Website/images/profile.png' %}" class="profile">
+                    <br>
+                    <p class="name">&nbsp&nbsp&nbsp{{ post.author.first_name }}&nbsp{{ post.author.last_name }}</p>
+                </a>
+                <br>
+                <br>
+                <a class="title" href="#">{{ post.title }} </a>
+                <br>
+                <br>
+                <p class="description">{{ post.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
