@@ -18,6 +18,7 @@
         <div class="navbar">
             <a class="button {% if active == 'home' %} active {% endif %}" href="{% url 'website-home' %}">Home</a>
             {% if user.is_authenticated %}
+                <a class="button  {% if active == 'account' %} active {% endif %}" href="{% url 'users-account' %}">Account</a>
                 <a class="button  {% if active == 'signout' %} active {% endif %}" href="{% url 'users-signout' %}">Sign Out</a>
             {% else %}
                 <a class="button  {% if active == 'signin' %} active {% endif %}" href="{% url 'users-signin' %}">Sign In</a>
