@@ -4,6 +4,11 @@
     font-family: sans-serif;
 }
 
+body {
+    background-color: #f3f3f3;
+    padding-bottom: 100px;
+}
+
 h1 {
     color: #313131;
     text-shadow: 1px 1px 3px #444444;
@@ -51,30 +56,52 @@ h1 {
     margin-top: 30px;
 }
 
+
 .container {
-    width: 80%;
+    width: 70%;
     margin: auto;
-    padding: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #cecece;
+}
+
+.blogs-container {
+    text-align: center;
+    padding-bottom: 20px;
+    width: 670px;
+    margin: auto;
+    align-items: center;
 }
 
 .card {
-    border: 2px solid #a3a3a3;
     border-radius: 10px;
-    margin-top: 10px;
-    padding: 30px;
+    box-shadow: 0px 0px 10px #cecece;
+    padding: 25px;
+    margin: auto;
+    margin-top: 20px;
     width: 500px;
+    padding-bottom: 50px;
+    background-color: #fff;
 }
 
-.author {
-    color: #000;
-    font-size: 90%;
-    color: #0da0da;
-    text-decoration: none;
-}
-
-.date_posted {
+.date {
     float: right;
-    font-size: 80%;
+    color: #f54e64;
+    font-size: 85%;
+}
+
+.card-text p {
+    color: #5c5c5c;
+    font-size: 100%;
+}
+
+.card-text h2 {
+    margin-bottom: 20px;
+    font-size: 180%;
+    text-shadow: 0 0 5px #acacac;
 }
 
 .author-profile {
@@ -86,16 +113,10 @@ h1 {
 }
 
 .name {
-    font-size: 90%;
-    margin-top: 25px;
+    float: left;
+    color: #11b4ff;
 }
 
-.title {
-    text-decoration: underline;
-    font-weight: bold;
-    font-size: 180%;
-    color: black;
-}
 
 form {
     margin-bottom: 50px;
@@ -116,8 +137,8 @@ input {
     width: 240px;
     outline: none;
     font-size: 105%;
-    -webkit-transition: 0.1s;
-    transition: 0.1s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
     text-align: center;
 }
 
@@ -128,7 +149,7 @@ input::placeholder {
 }
 
 input:focus {
-    border-bottom: 4px solid #ff4961;
+    border-bottom: 2px solid #ff4961;
 }
 
 .error-text {
@@ -153,6 +174,7 @@ input:focus {
     -webkit-transition: 0.3s;
     transition: 0.3s;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .submit:hover {
