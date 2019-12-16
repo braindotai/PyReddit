@@ -1,29 +1,31 @@
 {% extends "Website/layout.html" %}
 {% block content %}
-    <h1>Join Today</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {% for non_field_error in form.non_field.errors %}
-            <p class="error">{{ non_field_error }}</p>
-        {% endfor %}
-        {% for field in form %}
-            <div class="entry">
-                {{ field }}
-            </div>
+    <div class="container">
+        <h1>Join Today</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {% for non_field_error in form.non_field.errors %}
+                <p class="error">{{ non_field_error }}</p>
+            {% endfor %}
+            {% for field in form %}
+                <div class="entry">
+                    {{ field }}
+                </div>
 
-            {% if field.help_text %}
-                <p class="help-text">{{ field.help_text }}</p>
-            {% endif %}
-            
-            {% for error in field.errors %}
-                <p class="error-text">{{ error }}</p>
-            {% endfor%}
-            <br>
-        {% endfor %}
-        <button class="submit" type="submit">Join Now</button>
-        <br><br><br>
-        <div class="notice">
-            Already have an acount?&nbsp;&nbsp;&nbsp;<a class="submit" href="{% url 'users-signin' %}">Sign In</a>
-        </div>
-    </form>
+                {% if field.help_text %}
+                    <p class="help-text">{{ field.help_text }}</p>
+                {% endif %}
+                
+                {% for error in field.errors %}
+                    <p class="error-text">{{ error }}</p>
+                {% endfor%}
+                <br>
+            {% endfor %}
+            <button class="submit" type="submit">Join Now</button>
+            <br><br><br>
+            <div class="notice">
+                Already have an acount?&nbsp;&nbsp;&nbsp;<a class="submit" href="{% url 'users-signin' %}">Sign In</a>
+            </div>
+        </form>
+    </div>
 {% endblock content %}

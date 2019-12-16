@@ -1,27 +1,29 @@
 {% extends "Website/layout.html" %}
 {% block content %}
-    <h1>Account Info</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <img class="profile" src="{{ user.account.image.url }}">
-        <br>
-        <input type="file" name="image" accept="image/*" id="id_image">
-        <br>
-        <br>
-        <br>
-        {% csrf_token %}
-        {% for non_field_error in form.non_field.errors %}
-            <p class="error">{{ non_field_error }}</p>
-        {% endfor %}
-        {% for field in info_form %}
-            <div class="entry">
-                {{ field }}
-            </div>
-            
-            {% for error in field.errors %}
-                <p class="error-text">{{ error }}</p>
-            {% endfor%}
+    <div class="container">
+        <h1>Account Info</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <img class="profile" src="{{ user.account.image.url }}">
             <br>
-        {% endfor %}
-        <button class="submit" type="submit">Update</button>
-    </form>
+            <input type="file" name="image" accept="image/*" id="id_image">
+            <br>
+            <br>
+            <br>
+            {% csrf_token %}
+            {% for non_field_error in form.non_field.errors %}
+                <p class="error">{{ non_field_error }}</p>
+            {% endfor %}
+            {% for field in info_form %}
+                <div class="entry">
+                    {{ field }}
+                </div>
+                
+                {% for error in field.errors %}
+                    <p class="error-text">{{ error }}</p>
+                {% endfor%}
+                <br>
+            {% endfor %}
+            <button class="submit" type="submit">Update</button>
+        </form>
+    </div>
 {% endblock content %}
