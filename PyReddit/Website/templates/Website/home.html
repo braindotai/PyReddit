@@ -2,19 +2,21 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
+    <div class="blogs-container">
+        <h1>Blogs</h1>
         {% for post in posts %}
             <div class="card">
-                <p class="date_posted">{{ post.date_posted|date:"F d, Y" }}</p>
-                <a class="author" href="#">
+                <a class="card-author" href="#">
                     <img src="{{ post.author.account.image.url }}" class="author-profile">
+                    <br>
                     <p class="name">&nbsp;&nbsp;&nbsp;{{ post.author.first_name }}&nbsp{{ post.author.last_name }}</p>
                 </a>
-                <br><br>
-                <a class="title" href="#">{{ post.title }} </a>
-                <br>
-                <br>
-                <p class="description">{{ post.description }}</p>
+                <p class="date">{{ post.date_posted|date:"F d, Y" }}</p>
+                <div class="card-text">
+                    <br><br><br>
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.description }}</p>
+                </div>
             </div>
         {% endfor %}
     </div>
