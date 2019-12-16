@@ -9,9 +9,10 @@ def signup(request):
     if request.method == 'POST':
         form = UserSignUpForm(data = request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Account is created successfully. You can now sign in!")
-            return redirect('users-signin')
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Account is created successfully!")
+            return redirect('website-home')
         else:
             messages.error(request, f"Error occured while signing up!")
     else:
