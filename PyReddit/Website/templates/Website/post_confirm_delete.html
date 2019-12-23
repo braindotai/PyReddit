@@ -1,0 +1,14 @@
+{% extends "Website/layout.html" %}
+{% block content %}
+    <div class="confirmation-container">
+        <h2 class="confirmation-title">Do you want to delete blog post "{{ object.title }}" permanently?</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="user-options">
+                <button class="submit red" type="submit">Yes, delete my post</button>
+                &nbsp;
+                <a class="submit green" href="{% url 'website-postdetail' object.id %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
