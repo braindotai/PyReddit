@@ -11,9 +11,16 @@ body {
 
 h1 {
     color: #313131;
-    text-shadow: 1px 1px 3px #444444;
+    text-shadow: 0 0 3px #444444;
     text-align: center;
     margin-top: 30px;
+}
+
+.confirmation-title {
+    color: #313131;
+    text-shadow: 0 0 2px #444444;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .header {
@@ -44,6 +51,28 @@ h1 {
     transition: 0.3s;
 }
 
+.user-options {
+    text-align: center;
+    padding-top: 20px;
+    margin: 20px;
+}
+
+.user-options .green {
+    background-color: #43db76;
+}
+
+.user-options .green:hover {
+    box-shadow: 0 0 14px #36bd63;
+}
+
+.user-options .red {
+    background-color: #ff2a2ad3;
+}
+
+.user-options .red:hover {
+    box-shadow: 0 0 14px #ff2a2ad3;
+}
+
 .button:hover {
     box-shadow: 0 0 14px #c54b4b;
 }
@@ -62,10 +91,30 @@ h1 {
     margin: auto;
     margin-top: 60px;
     margin-bottom: 60px;
-    padding: 15px;
+    padding: 30px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 10px #cecece;
+}
+
+.confirmation-container {
+    width: 70%;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #cecece;
+}
+
+.content {
+    margin-top: 20px;
+    color: #5c5c5c;
+    font-size: 100%;
+    line-height: 25px;
 }
 
 .blogs-container {
@@ -82,8 +131,8 @@ h1 {
     padding: 25px;
     margin: auto;
     margin-top: 20px;
-    width: 500px;
-    padding-bottom: 50px;
+    width: 600px;
+    padding-bottom: 40px;
     background-color: #fff;
 }
 
@@ -96,6 +145,8 @@ h1 {
 .card-text p {
     color: #5c5c5c;
     font-size: 100%;
+    line-height: 23px;
+    margin-bottom: 40px;
 }
 
 .card-text h2 {
@@ -115,8 +166,24 @@ h1 {
 .name {
     float: left;
     color: #11b4ff;
+
+}
+.card-submit {
+    margin-left: 480px;
+    padding: 15px;
+    border: none;
+    border-radius: 1000px;
+    background-color: #ff6060;
+    color: #fff;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
 }
 
+.card-submit:hover {
+    box-shadow: 0 0 14px #ff3a3a;
+}
 
 form {
     margin-bottom: 50px;
@@ -150,6 +217,7 @@ input::placeholder {
 
 input:focus {
     border-bottom: 2px solid #ff4961;
+    box-shadow: inset 0 -3px 3px -3px #ff4961;
 }
 
 .error-text {
@@ -170,7 +238,6 @@ input:focus {
     border-radius: 1000px;
     background-color: #ff6060;
     color: #fff;
-    box-shadow: 0 0 10px #969595;
     -webkit-transition: 0.3s;
     transition: 0.3s;
     cursor: pointer;
@@ -227,4 +294,21 @@ input:focus {
     border-radius: 50%;
     margin: 10px;
     box-shadow: 0 0 8px #929292;
+}
+
+.content-create {
+    height: 500px;
+    border-radius: 10px;
+    border: 2px solid #383838c7;
+    width: 100%;
+    outline: none;
+    font-size: 105%;
+    padding: 10px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.content-create:focus {
+    border: 2px solid #ff4961;
+    box-shadow: inset 0 0 5px #ff4961;
 }
