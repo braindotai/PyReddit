@@ -25,11 +25,20 @@
                 <a class="button  {% if active == 'signup' %} active {% endif %}" href="{% url 'users-signup' %}">Sign Up</a>
             {% endif %}
             <a class="button  {% if active == 'ask' %} active {% endif %}" href="#">Ask</a>
-            <a class="button  {% if active == 'blog' %} active {% endif %}" href="#">Blogs</a>
+            <a class="button  {% if active == 'blogs' %} active {% endif %}" href="{% url 'website-posts' %}">Blogs</a>
         </div>
 
         <img src="{% static 'Website/images/logo.png' %}" alt="" class="logo-img" width=400>
     </div>
+    {% if active == 'blogs' %}
+        <div class="header">
+            <div class="navbar">
+                <a class="button {% if action == 'create' %} active {% endif %}" href="{% url 'website-postcreate' %}">Create New Blog Post</a>
+                <a class="button  {% if action == 'userblogs' %} active {% endif %}" href="{% url 'website-userposts' %}">My Blog Posts</a>
+            </div>
+            <br><br>
+        </div>
+    {% endif %}
 
     {% if messages %}
         {% for message in messages %}
