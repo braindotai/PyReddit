@@ -1,0 +1,32 @@
+{% extends "Website/layout.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="blogs-container">
+        {% if action == 'userblogs' %}
+            <h1>My Blog Posts</h1>
+        {% elif active == 'home' or active == 'blogs' %}
+            <h1>Latest Blog Posts</h1>
+        {% endif %}
+        {% for post in posts %}
+            <div class="card">
+                <a class="card-author" href="#">
+                    <img src="{{ post.author.account.image.url }}" class="author-profile">
+                    <br>
+                    <p class="name">&nbsp;&nbsp;&nbsp;{{ post.author.first_name }}&nbsp{{ post.author.last_name }}</p>
+                </a>
+                <p class="date">{{ post.date_posted|date:"F d, Y" }}</p>
+                <div class="card-text">
+                    <br><br><br>
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.description }}</p>
+                    <a href="{% url 'website-postdetail' post.id %}" class="card-submit">Read more</a>
+                </div>
+            </div>
+        {% endfor %}
+        {% if active == 'home' %}
+            <br><br><br>
+            <a href="{% url 'website-posts' %}" class="submit">See more blogs</a>
+        {% endif %}
+    </div>
+{% endblock content %}

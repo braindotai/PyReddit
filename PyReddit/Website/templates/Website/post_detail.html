@@ -1,0 +1,25 @@
+{% extends "Website/layout.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ object.title }}</h1>
+        {% if user.username == object.author.username %}
+            <div class="user-options">
+                <a href="{% url 'website-postupdate' object.id %}" class="submit green">Update This Blog</a>
+                &nbsp;&nbsp;
+                <a href="{% url 'website-postdelete' object.id %}" class="submit red">Delete This Blog</a>
+            </div>
+        {% endif %}
+        <div class="card-author" href="#">
+            <img src="{{ object.author.account.image.url }}" class="author-profile">
+            <br>
+            <p class="name">&nbsp;&nbsp;&nbsp;{{ object.author.first_name }}&nbsp{{ object.author.last_name }}</p>
+        </div>
+        <p class="date">{{ object.date_posted|date:"F d, Y" }}</p>
+        <div class="content">
+            <br><br><br>
+            <p>{{ object.content }}</p>
+        </div>
+    </div>
+{% endblock content %}

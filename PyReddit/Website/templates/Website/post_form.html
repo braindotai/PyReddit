@@ -1,0 +1,32 @@
+{% extends "Website/layout.html" %}
+{% block content %}
+    <div class="container">
+        <h1>Create Blog</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {% for non_field_error in form.non_field.errors %}
+                <p class="error">{{ non_field_error }}</p>
+            {% endfor %}
+            {% for field in form %}
+                <div class="entry">
+                    {{ field }}
+                </div>
+
+                {% if field.help_text %}
+                    <p class="help-text">{{ field.help_text }}</p>
+                {% endif %}
+                
+                {% for error in field.errors %}
+                    <p class="error-text">{{ error }}</p>
+                {% endfor%}
+                <br>
+            {% endfor %}
+            {% if action == 'create' %}
+                <button class="submit" type="submit">Create New Blog</button>
+            {% elif action == 'update' %}
+                <button class="submit" type="submit">Update Blog</button>
+            {% endif %}
+            <br><br><br>
+        </form>
+    </div>
+{% endblock content %}
