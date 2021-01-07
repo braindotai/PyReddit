@@ -161,13 +161,27 @@ h1 {
     height: 60px;
     border-radius: 50%;
     box-shadow: 0 0 8px #929292;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.author-profile:hover {
+    box-shadow: 0 0 16px #2c2c2c;
 }
 
 .name {
     float: left;
     color: #11b4ff;
-
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
 }
+
+.name:hover {
+    color: #444444;
+    text-shadow: 0 0 3px #a1a1a1;
+}
+
+
 .card-submit {
     margin-left: 480px;
     padding: 15px;
@@ -227,7 +241,7 @@ input:focus {
 }
 .help-text {
     font-size: 80%;
-    color: #119cf8;
+    color: #11b4ff;
 }
 
 .submit {
@@ -311,4 +325,18 @@ input:focus {
 .content-create:focus {
     border: 2px solid #ff4961;
     box-shadow: inset 0 0 5px #ff4961;
+}
+
+.pages {
+    font-size: 90%;
+    margin-top: 40px;
+}
+
+.pages .submit {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.current-page {
+    box-shadow: 0 0 14px #ff3a3a;
 }

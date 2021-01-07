@@ -1,20 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 from .models import Post
 from .forms import PostCreateForm
-
-
-def home(request):
-    context = {'posts': Post.objects.all(),
-               'active': 'home'}
-    return render(request, 'Website/home.html', context = context)
 
 
 class PostListView(ListView):
     model = Post
     context_object_name = 'posts'
+    paginate_by = 5
 
     def get_queryset(self, **kwargs):
         return Post.objects.order_by('-date_posted').all()
@@ -23,7 +18,6 @@ class PostListView(ListView):
         context = super(PostListView, self).get_context_data(**kwargs)
         if self.request.path == '/':
             context['active'] = 'home'
-            context['posts'] = Post.objects.order_by('-date_posted')[:3]
         elif self.request.path == '/blogs/':
             context['title'] = 'Blogs'
             context['active'] = 'blogs'
@@ -35,13 +29,20 @@ class UserPostListView(LoginRequiredMixin, ListView):
     paginate_by = 5
 
     def get_queryset(self, **kwargs):
-        return Post.objects.filter(author = self.request.user).all().order_by('-date_posted')
+        if self.request.user.username in self.request.path:
+            return Post.objects.filter(author = self.request.user).all().order_by('-date_posted')
+        user = get_object_or_404(User, username = self.kwargs.get('username'))
+        return Post.objects.filter(author = user).all().order_by('-date_posted')
 
     def get_context_data(self, **kwargs):
         context = super(UserPostListView, self).get_context_data(**kwargs)
         context['title'] = 'My Blogs'
         context['active'] = 'blogs'
-        context['action'] = 'userblogs'
+        if self.request.user.username in self.request.path:
+            context['action'] = 'current_userblogs'
+            print('done')
+        else:
+            context['action'] = 'userblogs'
         return context
 
 

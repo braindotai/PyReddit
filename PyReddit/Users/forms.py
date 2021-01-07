@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from .models import Account
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -116,7 +115,28 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'username', 'email']
 
+
+
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['image']
+
+
+
+# class PasswordResetForm(forms.ModelForm):
+#     email = forms.EmailField(required = False, widget = forms.TextInput(attrs = {'placeholder': 'Email of the account'}))
+
+#     class Meta:
+#         model = User
+#         fields = ["email"]
+    
+#     def clean_email(self, *args, **kwargs):
+#         email = self.cleaned_data.get('email')
+#         if len(email) == 0:
+#             raise forms.ValidationError('Email is required to reset forgotten password!')
+        
+#         user = User.objects.filter(email = email)
+#         if not user.exists():
+#             raise forms.ValidationError(f'Account with email "{email}" does not exist!')
+#         return email

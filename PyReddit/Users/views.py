@@ -2,11 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
+# from django.contrib.auth.views import PasswordResetView
 from .forms import UserSignUpForm, UserSignInForm, UserUpdateForm, ProfileUpdateForm
 
 
 def signup(request):
     if request.method == 'POST':
+        print(request.POST)
+        
         form = UserSignUpForm(data = request.POST)
         if form.is_valid():
             user = form.save()
@@ -69,4 +72,9 @@ def account(request):
                'active': 'account',
                'info_form': info_form,
                'profile_form': profile_form}
-    return render(request, 'Users/account.html', context = context) 
+    return render(request, 'Users/account.html', context = context)
+
+
+# class passwordreset(PasswordResetView):
+#     form_class = PasswordResetForm
+#     template_name = "Users/password_reset.html"

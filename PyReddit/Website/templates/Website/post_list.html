@@ -3,14 +3,16 @@
 
 {% block content %}
     <div class="blogs-container">
-        {% if action == 'userblogs' %}
-            <h1>My Blog Posts</h1>
-        {% elif active == 'home' or active == 'blogs' %}
+        {% if action == 'current_userblogs' %}
+            <h1>My Blog Posts - ({{ page_obj.paginator.count }})</h1>
+        {% elif action == 'userblogs' %}
+            <h1>Blog Posts by @{{ view.kwargs.username }} - ({{ page_obj.paginator.count }})</h1>
+        {% else %}
             <h1>Latest Blog Posts</h1>
         {% endif %}
         {% for post in posts %}
             <div class="card">
-                <a class="card-author" href="#">
+                <a class="card-author" href="{% url 'website-userposts' post.author.username %}">
                     <img src="{{ post.author.account.image.url }}" class="author-profile">
                     <br>
                     <p class="name">&nbsp;&nbsp;&nbsp;{{ post.author.first_name }}&nbsp{{ post.author.last_name }}</p>
@@ -27,6 +29,26 @@
         {% if active == 'home' %}
             <br><br><br>
             <a href="{% url 'website-posts' %}" class="submit">See more blogs</a>
+        {% elif is_paginated %}
+            <div class="pages">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="submit">First</a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="submit">Previous</a>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <a href="?page={{ num }}" class="submit current-page">&nbsp;{{ num }}&nbsp;</a>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+                        <a href="?page={{ num }}" class="submit">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="submit">Next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}" class="submit">Last</a>
+                {% endif %}
+            </div>
         {% endif %}
     </div>
 {% endblock content %}
