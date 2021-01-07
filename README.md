@@ -6,7 +6,7 @@
 
 <div align="center">
     <img src="./samples/1.png">
-</div>ns/
+</div>
 
 ### Written Blogs Previews.
 
